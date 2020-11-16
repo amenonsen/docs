@@ -3,6 +3,7 @@
 This repo contains the Gatsby application that powers EDB's documentation website, as well as the advocacy content. The site pulls additional content from other repos, in a process called 'sourcing'.
 
 ## Installation
+
 1. Clone the repo!
 2. (MacOS) Install the [homebrew package manager](https://brew.sh/), if it's not already installed.
 3. Install Node.js. We're currently using Node.js version 12. To install this version, first install `nvm` (Node Version Manager). This can be done with (MacOS) `brew install nvm`, followed by `nvm install`. Optionally, you can skip installing `nvm` and install Node.js 12 directly if you prefer.
@@ -12,16 +13,20 @@ This repo contains the Gatsby application that powers EDB's documentation websit
 7. Run the site locally with `yarn develop`. The site should now be running at `http://localhost:8000/`!
 
 ## Sources
+
 - Advocacy (default, part of this repo)
 - Product Docs - [EnterpriseDB/docs-products](https://github.com/EnterpriseDB/docs-products)
 
 ### Configuring
+
 When doing local development of the site or advocacy content, you may want to load other sources to experience the full site. The more sources you load, the slower the site will build, so it's recommended to typically only load the content you'll be working with the most.
 
 #### `yarn config-sources`
-Run `yarn config-sources` to setup your `dev-sources.json` file. This file tells Gatsby  which sources to load, and also provides the next script `yarn pull-sources` with the data it needs. The script is interactive!
+
+Run `yarn config-sources` to setup your `dev-sources.json` file. This file tells Gatsby which sources to load, and also provides the next script `yarn pull-sources` with the data it needs. The script is interactive!
 
 #### `yarn pull-sources`
+
 Use this command to pull down all the sources you have specified in your `dev-sources.json` file. **This will wipe all existing sources (besides advocacy_docs)**, so make sure you do not have any local changes to these files that you want to save!
 
 ## Resolving issues
@@ -39,18 +44,23 @@ To deploy to production, create a pull request merging `develop` into `main`. Wh
 Deployments of the site use the `build-sources.json` file to determine which sources need to be loaded. All environments are continuously deployed - new commits to relevant branches will trigger a build of the associated environment. The builds are done using Github Actions, so you can view deployment progress by clicking the "Actions" tab.
 
 #### Staging
+
 Staging is hosted on Netlify, and is built from the `develop` branch. The build and deployment process is handled by the `deploy-develop.yml` GitHub workflow.
 
 #### Production
+
 Production is hosted on Netlify, and is built from the `main` branch. The build and deployment process is handled by the `deploy-main.yml` GitHub workflow. The production deployment process will update the search index on Algolia.
 
 #### Review Builds
+
 Review builds are automatically created for pull requests. These builds are created by Heroku, and only include advocacy content, no other sources.
 
 ### Triggered Deployment
+
 Because the site pulls docs from multiple repositories, these source repositories may trigger rebuilds of the site when appropriate.
 
 # Advocacy Docs
+
 Advocacy doc files are in [advocacy_docs/getting-started](https://github.com/EnterpriseDB/docs/tree/master/advocacy_docs/getting-started)
 
 New docs need a `.mdx` suffix to be used by Gatsby.
